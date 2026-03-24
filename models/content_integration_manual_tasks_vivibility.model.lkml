@@ -10,5 +10,7 @@ persist_with: content_integration_manual_tasks_vivibility_default_datagroup
 
 
 explore: booking_log {
-  sql_always_where: ${booking_log.date_added_raw} >= NOW() - INTERVAL 6 MONTH ;;
+  sql_always_where:
+    ${booking_log.date_added_raw} >= NOW() - INTERVAL 6 MONTH
+    AND ${booking_log.message} LIKE '%%Escalating to Manual%%' ;;
 }
