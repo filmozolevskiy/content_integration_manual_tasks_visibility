@@ -29,6 +29,14 @@ view: booking_log {
     type: string
     sql: ${TABLE}.message ;;
   }
+
+  dimension: is_escalating_manual_ticket {
+    label: "Escalating to Manual Ticket"
+    description: "Message contains Escalating to Manual Ticket."
+    type: yesno
+    sql: ${TABLE}.message LIKE '%%Escalating to Manual Ticket.%%' ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id]
