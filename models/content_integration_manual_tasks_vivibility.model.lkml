@@ -20,3 +20,11 @@ explore: booking_log {
     ${booking_log.date_added_raw} >= NOW() - INTERVAL 6 MONTH
     AND ${booking_log.message} LIKE '%%Escalating to Manual%%' ;;
 }
+
+explore: wenrix_refunds {
+  label: "Wenrix Refunds"
+
+  always_filter: {
+    filters: [wenrix_refunds.refund_processed_date: "90 days"]
+  }
+}
